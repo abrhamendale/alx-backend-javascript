@@ -12,6 +12,6 @@ function handleProfileSignup(firstName, lastName, fileName){
 	//promiseState(v1).then((state) => {return state;});
 	//promiseState(v2).then((state) => {return state;});
 	var a = Promise.resolve();
-	return ([{status: promiseState(v1).then((state) => {return state;})}]);
+	return ([{status: promiseState(v1).then((state) => {return state;}), value: v1}]);
 }
 module.exports = handleProfileSignup;
