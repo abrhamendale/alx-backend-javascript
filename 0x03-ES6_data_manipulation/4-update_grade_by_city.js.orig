@@ -15,9 +15,6 @@ function grader(x, newGrades){
 	return x;
 }
 function updateStudentGradeByCity(students, city, newGrades){
-	if (!Array.isArray(students)){
-		return [];
-	}
 	const cs = students.filter(x => x.location == city);
 	const mp = cs.map((currentValue, index, array) => grader(currentValue, newGrades));
 	return mp;

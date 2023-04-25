@@ -1,5 +1,10 @@
 function setFromArray(a){
-	const mySet = new Set(a);
-	return mySet;
+	if (Array.isArray(a)){
+		let mySet = new Set(a);
+		return mySet;
+	}
+	else{
+		return ("Set {}");
+	}
 }
 module.exports = setFromArray;
