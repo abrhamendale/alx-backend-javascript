@@ -1,5 +1,5 @@
 function groceriesList() {
-  let m = new Map();
+  const m = new Map();
   m.set('Apples', 10);
   m.set('Tomatoes', 10);
   m.set('Pasta', 1);
