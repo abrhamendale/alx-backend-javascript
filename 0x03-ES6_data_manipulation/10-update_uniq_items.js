@@ -1,6 +1,6 @@
 function updateUniqueItems(m) {
   if (!(m instanceof Map)) {
-	  throw Error("Cannot process");
+    throw Error('Cannot process');
   }
   m.forEach((key, value) => {
     if (key === 1) {
