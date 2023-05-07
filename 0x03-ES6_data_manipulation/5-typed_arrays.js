@@ -1,4 +1,4 @@
-function createInt8TypedArray(length, position, value) {
+function createInt8TypedArray(length, position, value){
   const view;
   const buffer;
   if (Number.isNaN(length) || Number.isNaN(position) || Number.isNaN(value)) {
@@ -13,7 +13,7 @@ function createInt8TypedArray(length, position, value) {
     const buffer = new ArrayBuffer(length);
     view = new DataView(buffer);
     view.setInt8(position, value);
-  }
     return view;
+  }
 }
 module.exports = createInt8TypedArray;
