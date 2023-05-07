@@ -1,10 +1,8 @@
 function getListStudentIds(a1) {
-  if( Array.isArray(a1)) {
-    const a2 = a1.map(x => x.id);
+  if (Array.isArray(a1)) {
+    const a2 = a1.map((x) => x.id);
     return a2;
   }
-  else {
-    return [];
-  }
+  return [];
 }
 module.exports = getListStudentIds;
