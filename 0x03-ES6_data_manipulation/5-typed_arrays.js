@@ -1,4 +1,4 @@
-function createInt8TypedArray(length, position, value){
+function createInt8TypedArray(length, position, value) {
   let view = 0;
   let buffer = 0;
   if (Number.isNaN(length) || Number.isNaN(position) || Number.isNaN(value)) {
@@ -15,5 +15,6 @@ function createInt8TypedArray(length, position, value){
     view.setInt8(position, value);
     return view;
   }
+  return view;
 }
 module.exports = createInt8TypedArray;
