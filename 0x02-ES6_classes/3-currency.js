@@ -18,6 +18,6 @@ export default class Currency {
     return this._name;
   }
   displayFullCurrency() {
-    return this._name+" ("+this._code+")"
+    return this._name+" ("+this._code+")";
   }
 }
