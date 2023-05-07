@@ -6,4 +6,4 @@ console.log(createInt8TypedArray(10, 2, 89));
 
 //console.log(createInt8TypedArray(10, 11, 89));
 
-console.log(createInt8TypedArray(10, 'a', 89));
+console.log(createInt8TypedArray(10, 3, 89));

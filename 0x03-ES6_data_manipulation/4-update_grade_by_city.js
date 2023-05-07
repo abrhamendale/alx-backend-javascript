@@ -1,6 +1,6 @@
 function grader(x, newGrades) {
   let br = 0;
-  newGrades.forEach(function f(element) {
+  newGrades.forEach((element) => {
     if (x.id === element.studentId) {
       x.grade = element.grade;
       br = 1;
