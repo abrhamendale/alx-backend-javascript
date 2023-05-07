@@ -1,6 +1,6 @@
 export default class HolbertonCourse {
-  _name
-  _length
+  _name,
+  _length,
   _students
   constructor(name, length, students) {
     if (typeof name !== 'string')
