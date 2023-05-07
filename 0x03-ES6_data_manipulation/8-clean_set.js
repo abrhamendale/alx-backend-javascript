@@ -6,7 +6,7 @@ function cleanSet(s, startString) {
   }
   s.forEach((value) => {
     if (value && value.startsWith(startString) && startString !== '') {
-      res = str.concat(value.substring(3) + '-');
+      res = str.concat(value.substring(3), '-');
       str = res;
     }
   });
