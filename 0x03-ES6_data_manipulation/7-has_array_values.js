@@ -11,8 +11,6 @@ function hasValuesFromArray(s, a) {
   if (b) {
     return true;
   }
-  else {
-    return false;
-  }
+  return false;
 }
 module.exports = hasValuesFromArray;
