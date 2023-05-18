@@ -1,24 +1,23 @@
-import {uploadPhoto} from './utils.js';
-import {createUser} from './utils.js';
+import { uploadPhoto, createUser } from './utils';
 
-function handleProfileSignup(){
-	var e = 0;
-	var r1;
-	let u1 = uploadPhoto();
-		u1.then(function(result){
-			r1 = result;
-	}, () => {
-		e = 1;
-	});
-	let c1 = createUser();
-		c1.then(function(r2){
-			if (e != 1){
-				console.log(r1.body," ",r2.firstName," ",r2.lastName);
-			}
-			else{
-				console.log("Signup system offline");
-			}
-	}, () => {
-		console.log("Signup system offline");});
+function handleProfileSignup() {
+  let e = 0;
+  let r1;
+  const u1 = uploadPhoto();
+  u1.then((result) => {
+    r1 = result;
+  }, () => {
+    e = 1;
+  });
+  const c1 = createUser();
+  c1.then((r2) => {
+    if (e !== 1) {
+      console.log(r1.body, ' ', r2.firstName, ' ', r2.lastName);
+    } else {
+      console.log('Signup system offline');
+    }
+  }, () => {
+    console.log('Signup system offline');
+  });
 }
 module.exports = handleProfileSignup;
