@@ -12,7 +12,7 @@ function handleProfileSignup() {
   const c1 = createUser();
   c1.then((r2) => {
     if (e !== 1) {
-      console.log(r1.body, ' ', r2.firstName, ' ', r2.lastName);
+      console.log(r1.body + ' ' + r2.firstName + ' ' + r2.lastName);
     } else {
       console.log('Signup system offline');
     }
