@@ -22,7 +22,13 @@ function counter(cline) {
       }
     }
   }
-  console.log('Number of students:', cline.length - 2);
+  let count = 0;
+  for (let i = 1; i < cline.length; i += 1) {
+    if (cline[i] !== '') {
+      count += 1;
+    }
+  }
+  console.log('Number of students:', count);
   for (let i = 0; i < fld.length; i += 1) {
     const str = fld[i];
     console.log(`Number of students in ${str}: ${fldc[i]}. List:`, st[i]);

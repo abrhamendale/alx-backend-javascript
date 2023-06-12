@@ -30,17 +30,19 @@ function counter(cline) {
   console.log('Done!');
 }
 
-function countStudents(file) {
-  fs.readFile(file, 'utf-8', (err, data) => {
-    return new promise((resolve, reject) => {
-      resolve((data) => {
-        console.log("11111");
+async function countStudents(file) {
+  return new Promise((resolve, reject) => {
+    resolve((file) => {
+      fs.readFile(file, 'utf-8', (err, data) => {
 	const clines = data.split('\n');
-        counter(clines);
+        await counter(clines);
+	if (error) {
+	  throw new Error('Cannot load the database');
+	}
       });
-      reject((err) => {
-        throw new Error('Cannot load the database');
-      });
+    });
+    reject((err) => {
+      throw new Error('Cannot load the database');
     });
   });
 }
