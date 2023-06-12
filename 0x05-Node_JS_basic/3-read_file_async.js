@@ -27,19 +27,21 @@ function counter(cline) {
     const str = fld[i];
     console.log(`Number of students in ${str}: ${fldc[i]}. List:`, st[i]);
   }
+  console.log('Done!');
 }
 
 function countStudents(file) {
   fs.readFile(file, 'utf-8', (err, data) => {
-    if (err) {
-      /*
-       * console.log(err);
-       */
-      throw new Error('Cannot load the database');
-    } else {
-      const clines = data.split('\n');
-      counter(clines);
-    }
+    return new promise((resolve, reject) => {
+      resolve((data) => {
+        console.log("11111");
+	const clines = data.split('\n');
+        counter(clines);
+      });
+      reject((err) => {
+        throw new Error('Cannot load the database');
+      });
+    });
   });
 }
 module.exports = countStudents;
