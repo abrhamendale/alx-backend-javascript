@@ -25,7 +25,7 @@ function counter(cline) {
   console.log('Number of students:', cline.length - 2);
   for (let i = 0; i < fld.length; i += 1) {
     const str = fld[i];
-    console.log(`Number of students in ${str}:`, st[i]);
+    console.log(`Number of students in ${str}: ${fldc[i]}. List:`, st[i]);
   }
   console.log('Done!');
 }
@@ -33,7 +33,10 @@ function counter(cline) {
 function countStudents(file) {
   fs.readFile(file, 'utf-8', (err, data) => {
     if (err) {
-      console.log(err);
+      /*
+       * console.log(err);
+       */
+      throw new Error('Cannot load the database');
     } else {
       const clines = data.split('\n');
       counter(clines);
