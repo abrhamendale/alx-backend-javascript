@@ -10,8 +10,10 @@ function counter(cline) {
   const fldc = [];
   const st = [];
   for (let i = 1; i < cline.length; i += 1) {
-    if (fld.includes(cline[i].split(',')[3]) === false && cline[i] !== '') {
-      fld.push(cline[i].split(',')[3]);
+    if (cline[i].split(',')[3]) {
+      if (fld.includes(cline[i].split(',')[3]) === false && cline[i] !== '') {
+        fld.push(cline[i].split(',')[3]);
+      }
     }
   }
   for (let i = 0; i < fld.length; i += 1) {
@@ -29,15 +31,16 @@ function counter(cline) {
   }
   let count = 0;
   for (let i = 1; i < cline.length; i += 1) {
-    if (cline[i] !== '') {
+    if (cline[i] !== '' && cline[i].split(',')[3]) {
       count += 1;
     }
   }
-  const buf = [];
-  buf.push(`Number of students: ${count}`);
+  const buf = '';
+  buf.push('This is the list of our students\n');
+  buf += (`Number of students: ${count}`);
   for (let i = 0; i < fld.length; i += 1) {
     const str = fld[i];
-    buf.push(`\nNumber of students in ${str}: ${fldc[i]}. List: ${st[i]}`);
+    buf += (`\nNumber of students in ${str}: ${fldc[i]}. List: ${st[i]}`);
   }
   return buf;
 }

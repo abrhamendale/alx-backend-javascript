@@ -10,7 +10,6 @@ function counter(cline) {
   for (let i = 1; i < cline.length; i += 1) {
     if (cline[i].split(',')[3]) {
       if (fld.includes(cline[i].split(',')[3]) === false && cline[i] !== '') {
-        console.log(cline[i].split(',')[3], i);
         fld.push(cline[i].split(',')[3]);
       }
     }
