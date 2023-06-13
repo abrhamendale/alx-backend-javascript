@@ -1,6 +1,8 @@
+const express = require('express');
 const fs = require('fs');
 const util = require('util');
 
+const app = express();
 const readFile = util.promisify(fs.readFile);
 
 function counter(cline) {
@@ -21,31 +23,46 @@ function counter(cline) {
         if (st[i] !== '') {
           st[i] += ', ';
         }
-        st[i] += cline[j].split(',')[0];
+	st[i] += cline[j].split(',')[0];
       }
     }
   }
-  count = 0;
+  let count = 0;
   for (let i = 1; i < cline.length; i += 1) {
     if (cline[i] !== '') {
       count += 1;
     }
   }
-  console.log('Number of students:', count);
+  const buf = [];
+  buf.push('Number of students: ' + count);
   for (let i = 0; i < fld.length; i += 1) {
     const str = fld[i];
-    console.log(`Number of students in ${str}: ${fldc[i]}. List:`, st[i]);
+    buf.push(`\nNumber of students in ${str}: ${fldc[i]}. List: ` + st[i]);
   }
+  return buf;
 }
 
 async function countStudents(file) {
   try {
     const data = await readFile(file, 'utf-8');
     const clines = data.split('\n');
-    counter(clines);
+    return counter(clines);
   }
   catch (err) {
-    throw new Error('Cannot load the database');
+    return new Error('Cannot load the database');
   }
 }
-module.exports = countStudents;
+
+const hostname = '127.0.0.1';
+const port = 1245;
+
+app.get('/', (req, res) => {
+  res.send('Hello Holberton School!');
+});
+app.get('/students', (req, res) => {
+  Promise.resolve(countStudents('database.csv')).then((result) => res.end(String(result)));
+});
+module.exports = app;
+app.listen(port, hostname, () => {
+	  console.log(`Server running at http://${hostname}:${port}/`);
+});

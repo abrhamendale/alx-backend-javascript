@@ -1,5 +1,7 @@
+const http = require('http');
 const fs = require('fs');
 const util = require('util');
+const path = require('path');
 
 const readFile = util.promisify(fs.readFile);
 
@@ -25,27 +27,47 @@ function counter(cline) {
       }
     }
   }
-  count = 0;
+  let count = 0;
   for (let i = 1; i < cline.length; i += 1) {
     if (cline[i] !== '') {
       count += 1;
     }
   }
-  console.log('Number of students:', count);
+  const buf = [];
+  buf.push(`Number of students: ${count}`);
   for (let i = 0; i < fld.length; i += 1) {
     const str = fld[i];
-    console.log(`Number of students in ${str}: ${fldc[i]}. List:`, st[i]);
+    buf.push(`\nNumber of students in ${str}: ${fldc[i]}. List: ${st[i]}`);
   }
+  return buf;
 }
 
 async function countStudents(file) {
   try {
     const data = await readFile(file, 'utf-8');
     const clines = data.split('\n');
-    counter(clines);
-  }
-  catch (err) {
-    throw new Error('Cannot load the database');
+    return counter(clines);
+  } catch (err) {
+    return new Error('Cannot load the database');
   }
 }
-module.exports = countStudents;
+
+const hostname = '127.0.0.1';
+const port = 1245;
+
+const app = http.createServer((req, res) => {
+  res.setHeader('Content-Type', 'text/plain');
+  switch (req.url) {
+    case '/students':
+      res.statusCode = 200;
+      Promise.resolve(countStudents(`${process.argv[2]}`)).then((result) => res.end(String(result)));
+      break;
+    default:
+      res.statusCode = 200;
+      res.end('Hello Holberton School!');
+  }
+});
+module.exports = app;
+app.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
