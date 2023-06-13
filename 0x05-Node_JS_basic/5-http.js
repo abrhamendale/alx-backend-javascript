@@ -1,7 +1,6 @@
 const http = require('http');
 const fs = require('fs');
 const util = require('util');
-const path = require('path');
 
 const readFile = util.promisify(fs.readFile);
 
@@ -35,12 +34,12 @@ function counter(cline) {
       count += 1;
     }
   }
-  const buf = '';
-  buf.push('This is the list of our students\n');
-  buf += (`Number of students: ${count}`);
+  let buf = '';
+  buf += 'This is the list of our students\n';
+  buf += `Number of students: ${count}`;
   for (let i = 0; i < fld.length; i += 1) {
     const str = fld[i];
-    buf += (`\nNumber of students in ${str}: ${fldc[i]}. List: ${st[i]}`);
+    buf += `\nNumber of students in ${str}: ${fldc[i]}. List: ${st[i]}`;
   }
   return buf;
 }
@@ -63,7 +62,7 @@ const app = http.createServer((req, res) => {
   switch (req.url) {
     case '/students':
       res.statusCode = 200;
-      Promise.resolve(countStudents(`${process.argv[2]}`)).then((result) => res.end(String(result)));
+      Promise.resolve(countStudents(`${process.argv[2]}`)).then((result) => res.end(`${result}`));
       break;
     default:
       res.statusCode = 200;
