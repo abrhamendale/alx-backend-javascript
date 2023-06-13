@@ -31,7 +31,7 @@ function counter(cline) {
   console.log('Number of students:', count);
   for (let i = 0; i < fld.length; i += 1) {
     const str = fld[i];
-    console.log(`Number of students in ${str}: ${fldc[i]}. List:`, st[i]);
+    console.log(`Number o students in ${str}: ${fldc[i]}. List:`, st[i]);
   }
 }
 
