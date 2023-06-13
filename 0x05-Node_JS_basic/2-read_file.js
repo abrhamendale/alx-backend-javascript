@@ -36,16 +36,12 @@ function counter(cline) {
 }
 
 function countStudents(file) {
-  fs.readFile(file, 'utf-8', (err, data) => {
-    if (err) {
-      /*
-       * console.log(err);
-       */
-      throw new Error('Cannot load the database');
-    } else {
-      const clines = data.split('\n');
-      counter(clines);
-    }
-  });
+  try {
+    const data = fs.readFileSync(file, 'utf-8');
+    const clines = data.split('\n');
+    counter(clines);
+  } catch (err) {
+    throw new Error('Cannot load the database');
+  }
 }
 module.exports = countStudents;
