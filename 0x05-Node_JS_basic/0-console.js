@@ -2,6 +2,6 @@
  * Console js program.
  */
 function displayMessage(str) {
-  process.stdout.write(`${str}\n`);
+  console.log(str);
 }
 module.exports = displayMessage;

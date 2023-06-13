@@ -1,8 +1,11 @@
 const readDatabase = require('./utils.js');
-function getAllStudents(req, res) {
-  res.header(200);
+
+class StudentsController {
+  getAllStudents(req, res) {
+    res.Statuscode(200);
 }
 
 function getAllStudentsByMajor(req, res) {
   res.header(200);
+}
 }
