@@ -18,7 +18,7 @@ describe('hooks', function() {
       expect(console.log.returned('The total is: 120'));
       done();
     });
-    it('checks equalit', function(done) {
+    it('checks equality', function(done) {
       sendPaymentRequestToApi(10, 10);
       expect(console.log.returned('The total is: 10'));
       done();
