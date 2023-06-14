@@ -6,8 +6,11 @@ const sinon = require("sinon");
 const expect = chai.expect;
 
 describe('hooks', function() {
-  before(function() {
+  beforeEach(function() {
     sinon.spy(console, "log");
+  });
+  afterEach(function() {
+    console.log.restore();
   });
   describe("calculateNumber", function() {
     it('checks equality', function(done) {
