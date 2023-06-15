@@ -6,12 +6,15 @@ const expect = chai.expect;
 
 describe("calculateNumber", function() {
   it('checks equality', function() {
-    expect(calculateNumber('SUM', 1.1, 1.7) === 3).to.be.true;
+    expect(calculateNumber('SUM', 1.4, 4.5) === 6).to.be.true;
   });
   it('checks equality', function() {
-    expect(calculateNumber('SUM', -1.1, 1.7) === 1).to.be.true;
+    expect(calculateNumber('SUBTRACT', 1.4, 4.5) === -4).to.be.true;
   });
   it('checks equality', function() {1
-    expect(calculateNumber('DIVIDE', 1, 0) === 0).to.be.false;
+    expect(calculateNumber('DIVIDE', 1.4, 4.5) === 0.2).to.be.true;
+  });
+  it('checks equality', function() {1
+    expect(calculateNumber('DIVIDE', 1.4, 0) === 'Error').to.be.true;
   });
 });
